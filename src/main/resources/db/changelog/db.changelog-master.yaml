@@ -1,0 +1,126 @@
+databaseChangeLog:
+  - changeSet:
+      author: arkro
+      id: 1
+      changes:
+        - createTable:
+            tableName: poll
+            columns:
+              - column:
+                  autoIncrement: true
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: poll_name_pk
+              - column:
+                  name: poll_name
+                  type: VARCHAR
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: end_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  defaultValueBoolean: false
+                  name: is_active
+                  type: BOOLEAN
+                  constraints:
+                    nullable: false
+  - changeSet:
+      author: arkro
+      id: 2
+      changes:
+        - createTable:
+            tableName: question
+            columns:
+              - column:
+                  autoIncrement: true
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: question_pk
+              - column:
+                  name: question_text
+                  type: VARCHAR
+                  constraints:
+                    nullable: false
+              - column:
+                  name: order
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: poll_id
+                  type: INTEGER
+  - changeSet:
+      author: arkro
+      id: 3
+      changes:
+        - createIndex:
+            indexName: poll_name_poll_name_uindex
+            tableName: poll
+            unique: true
+            column:
+              name: poll_name
+  - changeSet:
+      author: arkro
+      id: 4
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: poll_id
+            baseTableName: question
+            constraintName: question_poll_id_fk
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: poll
+            validate: true
+
+  - changeSet:
+      author: arkro
+      id: 5
+      changes:
+        - dropDefaultValue:
+              tableName: poll
+              columnName: is_active
+
+  - changeSet:
+      author: arkro
+      id: 6
+      changes:
+        - addDefaultValue:
+              tableName: poll
+              columnName: is_active
+              defaultValueBoolean: true
+  - changeSet:
+      author: arkro
+      id: 7
+      changes:
+        - renameColumn:
+            newColumnName: poll_id
+            oldColumnName: id
+            tableName: poll
+        - renameColumn:
+            newColumnName: question_id
+            oldColumnName: id
+            tableName: question
+
+  - changeSet:
+      author: arkro
+      id: 8
+      changes:
+        - renameColumn:
+            newColumnName: question_poll_id
+            oldColumnName: poll_id
+            tableName: question

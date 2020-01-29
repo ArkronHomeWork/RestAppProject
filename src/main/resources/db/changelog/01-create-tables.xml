@@ -1,0 +1,44 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="arkro" id="1580309732273-1">
+        <createTable tableName="poll">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="poll_name_pk"/>
+            </column>
+            <column name="poll_name" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="arkro" id="1580309732273-2">
+        <createTable tableName="question">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="question_pk"/>
+            </column>
+            <column name="question_text" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="poll_id" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="arkro" id="1580309732273-3">
+        <createIndex indexName="poll_name_poll_name_uindex" tableName="poll" unique="true">
+            <column name="poll_name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="arkro" id="1580309732273-4">
+        <addForeignKeyConstraint baseColumnNames="poll_id" baseTableName="question" constraintName="question_poll_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="poll" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
