@@ -1,24 +1,28 @@
 package com.github.arkronzxc.resttest.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
-@Table(name ="question")
+@Table(name = "question")
 public class Question {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "question_id")
-    int id;
+    private int id;
 
     @Column(name = "question_text")
-    String questionText;
+    private String questionText;
 
-    @Column(name ="order")
-    int order;
+    @Column(name = "q_order")
+    private int order;
 
+    @JsonIgnore
+    @JoinColumn(name = "question_poll_id")
     @ManyToOne
-    @JoinColumn(name = "question_poll_id", referencedColumnName = "poll_id")
     private Poll poll;
-
-
 
 }

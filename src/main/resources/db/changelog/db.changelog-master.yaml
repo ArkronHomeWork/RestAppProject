@@ -180,3 +180,18 @@ databaseChangeLog:
             columnName: question_id
             newDataType: bigint
             tableName: question
+  - changeSet:
+      author: arkro
+      id: 11
+      changes:
+        - dropIndex:
+            indexName: poll_name_poll_name_uindex
+            tableName: poll
+  - changeSet:
+      author: arkro
+      id: 12
+      changes:
+        - renameColumn:
+            newColumnName: q_order
+            oldColumnName: order
+            tableName: question
