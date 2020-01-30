@@ -9,7 +9,8 @@ import java.util.List;
 public class Poll {
 
     @Id
-    int id;
+    @Column(name = "poll_id")
+    Long id;
 
     @Column(name = "poll_name")
     String pollName;
@@ -23,6 +24,6 @@ public class Poll {
     @Column(name = "is_active")
     boolean isActive;
 
-    @OneToMany
+    @OneToMany(mappedBy = "poll")
     private List<Question> questions;
 }

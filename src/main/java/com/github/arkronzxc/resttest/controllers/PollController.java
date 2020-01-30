@@ -1,7 +1,6 @@
 package com.github.arkronzxc.resttest.controllers;
 
 import com.github.arkronzxc.resttest.models.Poll;
-import com.github.arkronzxc.resttest.models.PollQuestionModel;
 import com.github.arkronzxc.resttest.repository.PollRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

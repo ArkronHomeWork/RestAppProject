@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name ="question")
 public class Question {
     @Id
+    @Column(name = "question_id")
     int id;
 
     @Column(name = "question_text")
@@ -15,7 +16,7 @@ public class Question {
     int order;
 
     @ManyToOne
-    @JoinColumn(name = "question_poll_id")
+    @JoinColumn(name = "question_poll_id", referencedColumnName = "poll_id")
     private Poll poll;
 
 
