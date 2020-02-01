@@ -1,6 +1,5 @@
 package com.github.arkronzxc.resttest.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -39,6 +38,9 @@ public class Poll {
     )
     private List<Question> questions;
 
+    /**
+     * @param poll
+     */
     @SuppressWarnings("CopyConstructorMissesField")
     public Poll(Poll poll) {
         this.pollName = poll.pollName;

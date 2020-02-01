@@ -30,17 +30,35 @@ public class PollController {
         return ResponseEntity.ok(pollService.getAllPoll(sortParam, sortType, pageNumber, onlyActive));
     }
 
+    /**
+     * @see package com.github.arkronzxc.resttest.service.PollService
+     * @param poll
+     * @return
+     */
+
     @PutMapping
     public ResponseEntity<Void> putPoll(@RequestBody Poll poll) {
         pollService.putPoll(poll);
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * @see package com.github.arkronzxc.resttest.service.PollService
+     * @param poll
+     * @return
+     */
+
     @PostMapping
     public ResponseEntity<Void> updatePoll(@RequestBody Poll poll) {
         pollService.putPoll(poll);
         return ResponseEntity.ok().build();
     }
+
+    /**
+     * @see package com.github.arkronzxc.resttest.service.PollService
+     * @param poll
+     * @return
+     */
 
     @DeleteMapping
     public ResponseEntity<Void> deletePoll(@RequestBody Poll poll) {
