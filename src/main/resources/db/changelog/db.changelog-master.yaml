@@ -92,17 +92,17 @@ databaseChangeLog:
       id: 5
       changes:
         - dropDefaultValue:
-              tableName: poll
-              columnName: is_active
+            tableName: poll
+            columnName: is_active
 
   - changeSet:
       author: arkro
       id: 6
       changes:
         - addDefaultValue:
-              tableName: poll
-              columnName: is_active
-              defaultValueBoolean: true
+            tableName: poll
+            columnName: is_active
+            defaultValueBoolean: true
   - changeSet:
       author: arkro
       id: 7
@@ -123,4 +123,75 @@ databaseChangeLog:
         - renameColumn:
             newColumnName: question_poll_id
             oldColumnName: poll_id
+            tableName: question
+
+  - changeSet:
+      author: senyast4745
+      id: 9
+      changes:
+        - insert:
+            tableName: poll
+            columns:
+              - column:
+                  name: poll_name
+                  value: test_poll
+              - column:
+                  name: start_date
+                  value: 2020-01-30
+              - column:
+                  name: end_date
+                  value: 2020-02-10
+              - column:
+                  name: is_active
+                  value: true
+        - insert:
+            tableName: question
+            columns:
+              - column:
+                  name: question_poll_id
+                  value: 1
+              - column:
+                  name: question_text
+                  value: question text
+              - column:
+                  name: order
+                  value: 1
+        - insert:
+            tableName: question
+            columns:
+              - column:
+                  name: question_poll_id
+                  value: 1
+              - column:
+                  name: question_text
+                  value: question test
+              - column:
+                  name: order
+                  value: 2
+  - changeSet:
+      author: senyast4745
+      id: 10
+      changes:
+        - modifyDataType:
+            columnName: poll_id
+            tableName: poll
+            newDataType: bigint
+        - modifyDataType:
+            columnName: question_id
+            newDataType: bigint
+            tableName: question
+  - changeSet:
+      author: arkro
+      id: 11
+      changes:
+        - dropIndex:
+            indexName: poll_name_poll_name_uindex
+            tableName: poll
+  - changeSet:
+      author: arkro
+      id: 12
+      changes:
+        - renameColumn:
+            newColumnName: q_order
+            oldColumnName: order
             tableName: question

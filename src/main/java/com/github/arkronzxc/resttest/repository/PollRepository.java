@@ -1,15 +1,20 @@
 package com.github.arkronzxc.resttest.repository;
 
 import com.github.arkronzxc.resttest.models.Poll;
-import com.github.arkronzxc.resttest.models.PollQuestionModel;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface PollRepository extends JpaRepository<Poll, Integer> {
-//    @Query(value = "select * from poll as p join question as q on p.poll_id = q.question_poll_id", nativeQuery = true)
+public interface PollRepository extends JpaRepository<Poll, Long> {
 
+    /**
+     * This method allows you to extract only active polls
+     * @param isActive option which allows you to show only active polls
+     * @see package com.github.arkronzxc.resttest.service.PollService
+     */
+    Page<Poll> findAllByActive(boolean isActive, Pageable pageable);
 }
+
+
