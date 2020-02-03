@@ -3,6 +3,7 @@ package com.github.arkronzxc.resttest.controllers;
 import com.github.arkronzxc.resttest.models.Poll;
 import com.github.arkronzxc.resttest.service.PollService;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,15 @@ public class PollController {
     public PollController(PollService pollService) {
         this.pollService = pollService;
     }
+
+    /**
+     * @see package com.github.arkronzxc.resttest.service.PollService
+     * @param sortParam Set of params
+     * @param sortType either Ascending Sort or Descending Sort
+     * @param pageNumber to pick needed page with data
+     * @param onlyActive to select which Pools should be shown: active or inactive
+     * @return a builder with the status set to {@linkplain HttpStatus#OK OK} with all suitable Polls
+     */
 
     @GetMapping("/all")
     public ResponseEntity<Page<Poll>> getAllPoll(@RequestParam(required = false,
@@ -32,8 +42,8 @@ public class PollController {
 
     /**
      * @see package com.github.arkronzxc.resttest.service.PollService
-     * @param poll
-     * @return
+     * @param poll to choose the name of creating Poll
+     * @return a builder with the status set to {@linkplain HttpStatus#OK OK}
      */
 
     @PutMapping
@@ -44,8 +54,8 @@ public class PollController {
 
     /**
      * @see package com.github.arkronzxc.resttest.service.PollService
-     * @param poll
-     * @return
+     * @param poll to choose the name of changing poll
+     * @return a builder with the status set to {@linkplain HttpStatus#OK OK}
      */
 
     @PostMapping
@@ -56,8 +66,7 @@ public class PollController {
 
     /**
      * @see package com.github.arkronzxc.resttest.service.PollService
-     * @param poll
-     * @return
+     * @param poll to select a poll to delete
      */
 
     @DeleteMapping

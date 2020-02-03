@@ -10,6 +10,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+/**
+ * REST service which providing the following methods:
+ *      Getting all Polls (you can specify one or more parameters for filtering or leave it with default values)
+ *      Creating a Poll (method is able to receive all of the Poll and Question data)
+ *      Updating a Poll (method is able to receive all of the Poll and Question data)
+ *      Deleting a Poll
+ * At the first start service independently create the necessary objects in the database using Liquibase
+ *      {@see resources.db.changelog.db.changelog-master.yaml}
+ */
+
 @Service
 public class PollService {
 
@@ -61,6 +71,7 @@ public class PollService {
 
     /**
      * This method allows you to put a new poll or change existing one via Post or Put request
+     * @param poll to choose the name of creating or changing poll
      */
 
     public void putPoll(Poll poll) {
@@ -69,7 +80,7 @@ public class PollService {
 
     /**
      * This method allows you to delete certain poll via Delete request
-     * @param poll
+     * @param poll to select a poll to delete
      */
 
     public void deletePoll(Poll poll) {

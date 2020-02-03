@@ -5,6 +5,11 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**
+ * This table provides you with link of poll_id, it's text and displayed order(indication of how many questions should
+ *      be sorted )
+ */
+
 @Data
 @Entity
 @Table(name = "question")

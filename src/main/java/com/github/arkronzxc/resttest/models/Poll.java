@@ -7,6 +7,11 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Table which contains attributes of Polls
+ * Each Poll is able to contain lots of Questions
+ */
+
 @Data
 @Entity
 @Table(name = "poll")
@@ -38,9 +43,6 @@ public class Poll {
     )
     private List<Question> questions;
 
-    /**
-     * @param poll
-     */
     @SuppressWarnings("CopyConstructorMissesField")
     public Poll(Poll poll) {
         this.pollName = poll.pollName;
