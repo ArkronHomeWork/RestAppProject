@@ -12,12 +12,12 @@ import java.util.Set;
 
 /**
  * REST service which providing the following methods:
- *      Getting all Polls (you can specify one or more parameters for filtering or leave it with default values)
- *      Creating a Poll (method is able to receive all of the Poll and Question data)
- *      Updating a Poll (method is able to receive all of the Poll and Question data)
- *      Deleting a Poll
+ * Getting all Polls (you can specify one or more parameters for filtering or leave it with default values)
+ * Creating a Poll (method is able to receive all the Poll and Question data)
+ * Updating a Poll (method is able to receive all the Poll and Question data)
+ * Deleting a Poll
  * At the first start service independently create the necessary objects in the database using Liquibase
- *      {@see resources.db.changelog.db.changelog-master.yaml}
+ * {@see resources.db.changelog.db.changelog-master.yaml}
  */
 
 @Service
@@ -31,12 +31,12 @@ public class PollService {
     }
 
     /**
-     * @param sortParam allows to choose the needed params. Default value is "sd" which means "start_date".
-     *                 You can enumerate as many, as you need and as your columns in db allows you to.
-     * @param sortType allows you to choose either Ascending sort or Descending sort
-     * @param pageNumber pick the needed page. Each page contains 10 results
+     * @param sortParam  allows to choose the needed params. Default value is "sd" which means "start_date".
+     *                   You can enumerate as many, as you need and as your columns in db allows you to.
+     * @param sortType   allows you to choose either Ascending sort or Descending sort
+     * @param pageNumber pick the needed page. Each page contains 10 result
      * @param onlyActive signature which allows you to show only active polls
-     * @return a new {@link Page} which contains all satisfying elements
+     * @return a new {@link Page} which contains all satisfying elements.
      */
 
     public Page<Poll> getAllPoll(Set<String> sortParam,
@@ -71,6 +71,7 @@ public class PollService {
 
     /**
      * This method allows you to put a new poll or change existing one via Post or Put request
+     *
      * @param poll to choose the name of creating or changing poll
      */
 
@@ -79,7 +80,8 @@ public class PollService {
     }
 
     /**
-     * This method allows you to delete certain poll via Delete request
+     * This method allows you to delete a certain poll via Delete request
+     *
      * @param poll to select a poll to delete
      */
 

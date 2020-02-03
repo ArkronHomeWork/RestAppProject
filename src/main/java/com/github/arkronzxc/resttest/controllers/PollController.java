@@ -24,7 +24,7 @@ public class PollController {
      * @param sortType either Ascending Sort or Descending Sort
      * @param pageNumber to pick needed page with data
      * @param onlyActive to select which Pools should be shown: active or inactive
-     * @return a builder with the status set to {@linkplain HttpStatus#OK OK} with all suitable Polls
+     * @return a builder with the status set to {@linkplain HttpStatus#OK OK} with all suitable Polls.
      */
 
     @GetMapping("/all")
@@ -55,7 +55,7 @@ public class PollController {
     /**
      * @see package com.github.arkronzxc.resttest.service.PollService
      * @param poll to choose the name of changing poll
-     * @return a builder with the status set to {@linkplain HttpStatus#OK OK}
+     * @return a builder with the status set to {@linkplain HttpStatus#OK OK}.
      */
 
     @PostMapping
@@ -66,7 +66,7 @@ public class PollController {
 
     /**
      * @see package com.github.arkronzxc.resttest.service.PollService
-     * @param poll to select a poll to delete
+     * @param poll to select a poll to delete.
      */
 
     @DeleteMapping

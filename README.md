@@ -11,5 +11,5 @@ further changing this file may cause database initialization errors.
  ##### Documentation
  ***
  If you will have any issues with Liquibase [here](https://www.liquibase.org/documentation/index.html) you can find 
- all of the solutions.
+ all the solutions.
  
